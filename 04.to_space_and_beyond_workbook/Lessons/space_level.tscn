@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmiy1lc5gdhbb"]
+
+[ext_resource type="PackedScene" uid="uid://cwg7put23vp0i" path="res://Lessons/ship.tscn" id="1_hfkqh"]
+[ext_resource type="PackedScene" uid="uid://dgf54k70yiiff" path="res://assets/ship/main_thruster/main_thruster.tscn" id="2_gek3k"]
+[ext_resource type="PackedScene" uid="uid://bklom8bhpxg4h" path="res://assets/ship/side_thruster/side_thruster.tscn" id="3_kew2u"]
+
+[node name="SpaceLevel" type="Node2D"]
+
+[node name="Ship" parent="." instance=ExtResource("1_hfkqh")]
+position = Vector2(709, 283)
+
+[node name="MainThruster2" parent="Ship" instance=ExtResource("2_gek3k")]
+position = Vector2(-32, 0)
+points = PackedVector2Array(0, 0, 33.3333, 0, 66.6667, 0)
+
+[node name="SideThruster3" parent="Ship" instance=ExtResource("3_kew2u")]
+position = Vector2(-45, -21)
+rotation = 1.89088
+
+[node name="SideThruster4" parent="Ship" instance=ExtResource("3_kew2u")]
+position = Vector2(-47, 21)
+rotation = 1.21699
