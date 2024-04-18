@@ -1,21 +1,16 @@
 extends Area2D
 
-var gem_count := 0
-func set_gem_count(new_gem_count: int) -> void:
-	gem_count = new_gem_count
-	get_node("UI/GemCount").text = "x" + str(gem_count)
 
 var max_speed := 1200.0
 var velocity := Vector2(0, 0)
 var steering_factor := 3.0
 
 var health := 10
+var gem_count := 0
 
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
-	# This call updates the health bar to match the health variable when the
-	# game starts.
 	set_health(health)
 
 
@@ -31,9 +26,18 @@ func _process(delta: float) -> void:
 	var steering := desired_velocity - velocity
 	velocity += steering * steering_factor * delta
 	position += velocity * delta
+	
+	var viewport_size := get_viewport_rect().size
+	position.x = wrapf(position.x, 0, viewport_size.x)
+	position.y = wrapf(position.y, 0, viewport_size.y)
 
 	if velocity.length() > 0.0:
 		get_node("Sprite2D").rotation = velocity.angle()
+
+
+func set_gem_count(new_gem_count: int) -> void:
+	gem_count = new_gem_count
+	get_node("UI/GemCount").text = "x" + str(gem_count)
 
 
 func set_health(new_health: int) -> void:
