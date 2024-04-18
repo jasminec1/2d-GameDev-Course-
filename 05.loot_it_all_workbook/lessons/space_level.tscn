@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="3_e6xy1"]
 
 [node name="Level" type="Node2D"]
-position = Vector2(294, 167)
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Ship" parent="." instance=ExtResource("2_2j1u5")]
-position = Vector2(881, 543)
+position = Vector2(968, 534)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("3_e6xy1")]
 
 [node name="RandomItemPlacer" parent="." instance=ExtResource("3_76g2p")]
-position = Vector2(967, 533)
+position = Vector2(2.08165e-12, 2.08165e-12)

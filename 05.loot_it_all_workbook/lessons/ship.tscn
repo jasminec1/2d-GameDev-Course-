@@ -18,7 +18,8 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjn4x"]
 font_size = 20
-font_color = Color(0, 0, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Ship" type="Area2D"]
 collision_mask = 2
