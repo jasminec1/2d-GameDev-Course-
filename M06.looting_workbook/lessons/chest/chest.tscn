@@ -1,26 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://bybsd42mfxfvo"]
+[gd_scene load_steps=8 format=3 uid="uid://bybsd42mfxfvo"]
 
+[ext_resource type="Script" path="res://lessons/chest/chest.gd" id="1_5yyqy"]
 [ext_resource type="Texture2D" uid="uid://c3hwsm5ugp8qw" path="res://lessons/chest/bottom.png" id="1_22lbk"]
+[ext_resource type="Shader" path="res://lessons/chest/group_outline.gdshader" id="2_7avc8"]
 [ext_resource type="Texture2D" uid="uid://bnem1cahhoxdk" path="res://lessons/chest/top.png" id="2_pw3mj"]
 [ext_resource type="Texture2D" uid="uid://bu2jin246nel5" path="res://lessons/chest/lock.png" id="3_k7x3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjauu"]
 size = Vector2(99, 70)
 
-[node name="Chest" type="Area2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdngb"]
+resource_local_to_scene = true
+shader = ExtResource("2_7avc8")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 37.7
+shader_parameter/viewport_scale = Vector2(1, 1)
 
-[node name="Bottom" type="Sprite2D" parent="."]
+[node name="Chest" type="Area2D"]
+script = ExtResource("1_5yyqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(2, 16)
+shape = SubResource("RectangleShape2D_qjauu")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_qdngb")
+
+[node name="Bottom" type="Sprite2D" parent="CanvasGroup"]
 position = Vector2(2, 16)
 texture = ExtResource("1_22lbk")
 
-[node name="Top" type="Sprite2D" parent="."]
-position = Vector2(2, 16)
+[node name="Top" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(2, 3)
 texture = ExtResource("2_pw3mj")
 
-[node name="Lock" type="Sprite2D" parent="."]
-position = Vector2(2, 36)
+[node name="Lock" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(2, 30)
 texture = ExtResource("3_k7x3c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 16)
-shape = SubResource("RectangleShape2D_qjauu")
