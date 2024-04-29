@@ -324,10 +324,10 @@ color = Color(0.977546, 0.842183, 0.960847, 1)
 metadata/_edit_lock_ = true
 
 [node name="Chest" parent="." instance=ExtResource("7_be01o")]
-position = Vector2(575, 181)
+position = Vector2(576, 198)
 
 [node name="Chest2" parent="." instance=ExtResource("7_be01o")]
-position = Vector2(443, 306)
+position = Vector2(412, 315)
 
 [node name="Chest3" parent="." instance=ExtResource("7_be01o")]
-position = Vector2(720, 305)
+position = Vector2(740, 319)

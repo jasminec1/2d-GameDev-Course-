@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bybsd42mfxfvo"]
+[gd_scene load_steps=11 format=3 uid="uid://bybsd42mfxfvo"]
 
 [ext_resource type="Script" path="res://lessons/chest/chest.gd" id="1_5yyqy"]
 [ext_resource type="Texture2D" uid="uid://c3hwsm5ugp8qw" path="res://lessons/chest/bottom.png" id="1_22lbk"]
@@ -13,8 +13,44 @@ size = Vector2(99, 70)
 resource_local_to_scene = true
 shader = ExtResource("2_7avc8")
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/line_thickness = 37.7
+shader_parameter/line_thickness = 4.0
 shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_gt8v5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l5l3b"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(64, -94), Vector2(150, 67)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sn3ke"]
+_data = {
+"RESET": SubResource("Animation_gt8v5"),
+"open": SubResource("Animation_l5l3b")
+}
 
 [node name="Chest" type="Area2D"]
 script = ExtResource("1_5yyqy")
@@ -32,9 +68,14 @@ position = Vector2(2, 16)
 texture = ExtResource("1_22lbk")
 
 [node name="Top" type="Sprite2D" parent="CanvasGroup"]
-position = Vector2(2, 3)
+position = Vector2(2, 0)
 texture = ExtResource("2_pw3mj")
 
 [node name="Lock" type="Sprite2D" parent="CanvasGroup"]
 position = Vector2(2, 30)
 texture = ExtResource("3_k7x3c")
+
+[node name="open" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sn3ke")
+}
