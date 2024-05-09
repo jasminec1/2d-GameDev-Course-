@@ -32,3 +32,5 @@ func spawn_candy() -> void:
 		add_child(candy)
 		candy.position = random_position
 
+
+
